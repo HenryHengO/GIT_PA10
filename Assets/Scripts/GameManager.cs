@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         if (Time.timeScale == 0 && Input.GetKeyDown(KeyCode.Return))
             StartGame();
+            UpdateScore(PlayerPrefs.GetInt("Score"));
     }
 
     public void UpdateScore(int value)
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
+        PlayerPrefs.SetInt("Score", 0);
+        PlayerPrefs.SetInt("Start", 1);
         Score = 0;
         Time.timeScale = 1;
         Txt_Message.text = "";
